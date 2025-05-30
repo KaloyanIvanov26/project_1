@@ -1,0 +1,4 @@
+ROOM,101,Single,100.0,true
+ROOM,102,Double,150.0,true
+ROOM,103,Suite,250.0,true
+ROOM,55588,djmjt,878797.0,true
