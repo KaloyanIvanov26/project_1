@@ -69,5 +69,3 @@ project_1/
 - Kaloyan Ivanov
 
 ---
-
-*This project is for educational purposes.*
