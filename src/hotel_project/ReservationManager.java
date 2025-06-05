@@ -32,7 +32,7 @@ public boolean deleteRoom(int roomNumber) {
         Room room = rooms.get(i);
         if (room.getRoomNumber() == roomNumber) {
             if (!room.isAvailable()) {
-                return false; // Don't delete occupied rooms
+                return false; 
             }
             rooms.remove(i);
             roomTree.delete(room);
