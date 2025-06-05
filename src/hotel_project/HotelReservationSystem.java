@@ -103,6 +103,10 @@ public class HotelReservationSystem extends JFrame {
         btnPrintTree.addActionListener(e -> reservationManager.getRoomTree().inorder());
         bottomPanel.add(btnPrintTree);
 
+        JButton btnSortByCheckIn = new JButton("Sort by Check-In Date");
+        btnSortByCheckIn.addActionListener(e -> sortReservationsByCheckInDate());
+        bottomPanel.add(btnSortByCheckIn);
+
         mainPanel.add(bottomPanel);
     }
 
@@ -260,6 +264,30 @@ private void loadSampleData() {
     reservationManager.addRoom(new Room(103, "Suite", 250.0));
     updateRoomTable();
 }
+    private void sortReservationsByCheckInDate() {
+        DynamicArray<Reservation> reservations = reservationManager.getReservations();
+        for (int i = 1; i < reservations.size(); i++) {
+            Reservation key = reservations.get(i);
+            int j = i - 1;
+            while (j >= 0 && reservations.get(j).getCheckInDate().after(key.getCheckInDate())) {
+                reservations.add(j + 1, reservations.get(j));
+                reservations.remove(j);
+                j--;
+            }
+            reservations.remove(j + 1);
+            reservations.add(j + 1, key);
+        }
+        JOptionPane.showMessageDialog(this, "Reservations sorted by check-in date.");
+        StringBuilder sb = new StringBuilder();
+        sb.append("Sorted Reservations by Check-In Date:\n");
+        for (int i = 0; i < reservations.size(); i++) {
+            Reservation r = reservations.get(i);
+            sb.append((i+1) + ". " + r.toString() + "\n");
+        }
+        JOptionPane.showMessageDialog(this, sb.toString());
+        updateRoomTable();
+    }
+
 public static void main(String[] args) {
     SwingUtilities.invokeLater(() -> new HotelReservationSystem().setVisible(true));
 }
