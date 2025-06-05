@@ -54,7 +54,7 @@ private Node deleteRec(Node root, T value) {
     } else if (cmp > 0) {
         root.right = deleteRec(root.right, value);
     } else {
-        if (root.left == null)
+                if (root.left == null)
             return root.right;
         else if (root.right == null)
             return root.left;

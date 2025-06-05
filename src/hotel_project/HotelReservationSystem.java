@@ -91,13 +91,6 @@ public class HotelReservationSystem extends JFrame {
         btnDeleteRoom.addActionListener(e -> deleteRoomAction());
         bottomPanel.add(btnDeleteRoom);
 
-        JButton btnSort = new JButton("Sort Reservations by Check-In");
-        btnSort.addActionListener(e -> {
-            reservationManager.sortReservationsByCheckInDate();
-            JOptionPane.showMessageDialog(this, "Reservations sorted by check-in date.");
-        });
-        bottomPanel.add(btnSort);
-
         JButton btnSave = new JButton("Save Data");
         btnSave.addActionListener(e -> saveDataAction());
         bottomPanel.add(btnSave);
@@ -267,7 +260,6 @@ private void loadSampleData() {
     reservationManager.addRoom(new Room(103, "Suite", 250.0));
     updateRoomTable();
 }
-
 public static void main(String[] args) {
     SwingUtilities.invokeLater(() -> new HotelReservationSystem().setVisible(true));
 }
